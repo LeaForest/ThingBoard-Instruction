@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)https://thingsboard.io/docs/guides/ -->
+<html id="docs" class="Guides flip-nav translated-ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>指南|  东西板</title>
+<meta name="generator" content="Jekyll v3.8.5">
+<meta property="og:title" content="Guides">
+<meta name="author" content="thingsboard">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Documentation repository">
+<meta property="og:description" content="Documentation repository">
+<link rel="canonical" href="https://thingsboard.io/docs/guides/">
+<meta property="og:url" content="https://thingsboard.io/docs/guides/">
+<meta property="og:site_name" content="ThingsBoard">
+<meta property="og:image" content="https://thingsboard.io/images/thingsboard_logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@thingsboard">
+<meta name="twitter:creator" content="@thingsboard">
+<script type="text/javascript" src="./指南_ 东西板_files/sweetalert.min.js.下载"></script><script type="text/javascript" src="./指南_ 东西板_files/script.js.下载"></script><script type="text/javascript" src="./指南_ 东西板_files/jquery.vide.js.下载"></script><script type="text/javascript" src="./指南_ 东西板_files/jquery-ui.min.js.下载"></script><script async="" src="./指南_ 东西板_files/analytics.js.下载"></script><script type="text/javascript" src="./指南_ 东西板_files/jquery-2.2.0.min.js.下载"></script><script type="application/ld+json">
+{"headline":"Guides","@type":"WebPage","url":"https://thingsboard.io/docs/guides/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://thingsboard.io/images/thingsboard_logo.png"},"name":"thingsboard"},"author":{"@type":"Person","name":"thingsboard"},"image":{"twitter":"/images/thingsboard_logo.png","facebook":"/images/thingsboard_logo.png","url":"https://thingsboard.io/images/thingsboard_logo.png","@type":"imageObject"},"description":"Documentation repository","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+	
+	
+	
+	<link rel="shortcut icon" type="image/png" href="https://thingsboard.io/images/favicon.png">
+	<link href="./指南_ 东西板_files/font-awesome.min.css" rel="stylesheet">
+	<link href="./指南_ 东西板_files/css" rel="stylesheet">
+	<link href="./指南_ 东西板_files/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./指南_ 东西板_files/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="./指南_ 东西板_files/styles.css">
+    <script async="" defer="" src="./指南_ 东西板_files/buttons.js.下载"></script>
+    <script src="./指南_ 东西板_files/qs.min.js.下载"></script>
+	<script src="./指南_ 东西板_files/gifffer.min.js.下载"></script>
+    <script src="./指南_ 东西板_files/clipboard.min.js.下载"></script>
+	<script type="text/javascript">
+        window.onload = function() {
+            Gifffer();
+        }
+	</script>
+	<script type="text/javascript">
+		/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+		!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+		/*! onloadCSS. (onload callback for loadCSS) [c]2017 Filament Group, Inc. MIT License */
+		function onloadCSS(a,b){function c(){!d&&b&&(d=!0,b.call(a))}var d;a.addEventListener&&a.addEventListener("load",c),a.attachEvent&&a.attachEvent("onload",c),"isApplicationInstalled"in navigator&&"onloadcssdefined"in a&&a.onloadcssdefined(c)}
+	</script>
+	<script type="text/javascript">
+
+		function jqueryDefer(method) {
+			if (window.jQuery) {
+				method();
+			} else {
+				setTimeout(function() {
+					jqueryDefer(method)
+				}, 50);
+			}
+		}
+
+        function mermaidDefer(method) {
+            if (window.mermaid) {
+                method();
+            } else {
+                if (!window.mermaidLoading) {
+                    window.mermaidLoading = true;
+                    loadScript("/js/mermaid.min.js", function() {
+                        mermaid.initialize({
+                            startOnLoad:false,
+                            flowchart:{
+                                htmlLabels: true
+                            }
+                        });
+                        jqueryDefer(function() {
+                            setTimeout(function() {
+                                var scroll = $(window).scrollTop();
+                                $('.mermaidTooltip').css("transform", "translate(0px," + (scroll - 40) + "px)");
+                                $(window).scroll(function (event) {
+                                    var scroll = $(window).scrollTop();
+                                    $('.mermaidTooltip').css("transform", "translate(0px," + (scroll - 40) + "px)");
+                                });
+                            }, 300);
+                        });
+                    });
+                }
+                setTimeout(function() {
+                    mermaidDefer(method)
+                }, 50);
+            }
+        }
+
+		function jqueryUiDefer(method) {
+			if (window.jQuery && window.jQuery.ui) {
+				method();
+			} else {
+				setTimeout(function() {
+					jqueryUiDefer(method)
+				}, 50);
+			}
+		}
+
+		window.vis = (function(){
+			var stateKey,
+					eventKey,
+					keys = {
+						hidden: "visibilitychange",
+						webkitHidden: "webkitvisibilitychange",
+						mozHidden: "mozvisibilitychange",
+						msHidden: "msvisibilitychange"
+					};
+			for (stateKey in keys) {
+				if (stateKey in document) {
+					eventKey = keys[stateKey];
+					break;
+				}
+			}
+			return function(c) {
+				if (c) document.addEventListener(eventKey, c);
+				return !document[stateKey];
+			}
+		})();
+
+		function loadScript(src, callback)
+		{
+			var s, r, t;
+			r = false;
+			s = document.createElement('script');
+			s.type = 'text/javascript';
+			s.src = src;
+			s.onload = s.onreadystatechange = function() {
+				if ( !r && (!this.readyState || this.readyState == 'complete') )
+				{
+					r = true;
+					if (callback) {
+						callback();
+					}
+				}
+			};
+			t = document.getElementsByTagName('script')[0];
+			t.parentNode.insertBefore(s, t);
+		}
+
+		function loadCssAsync(src, callback) {
+			var stylesheet = loadCSS( src );
+			if (callback) {
+				onloadCSS(stylesheet, callback);
+			}
+		}
+
+		function loadNextScript(index, scriptsList, completeCallback) {
+			if (index < scriptsList.length) {
+				var script = scriptsList[index];
+				if (script.type === 'script') {
+					loadScript(script.src, function() {
+                        if (script.callback) {
+                            script.callback();
+                        }
+						index++;
+						loadNextScript(index, scriptsList, completeCallback);
+					});
+				} else if (script.type === 'css') {
+					loadCssAsync(script.src, function() {
+						index++;
+						loadNextScript(index, scriptsList, completeCallback);
+					});
+				}
+			} else if (completeCallback) {
+				completeCallback();
+			}
+		}
+
+		var initialScriptsList = [
+			{src: '/js/jquery-2.2.0.min.js', type: 'script'},
+			{src: '/css/jquery-ui.min.css', type: 'css'},
+			{src: '/js/jquery-ui.min.js', type: 'script'},
+			{src: '/js/jquery.vide.js', type: 'script'},
+			{src: '/js/script.js', type: 'script'},
+			{src: '/css/sweetalert.css', type: 'css'},
+			{src: '/js/sweetalert.min.js', type: 'script'}
+		];
+
+		loadNextScript(0, initialScriptsList);
+
+		jqueryDefer(function() {
+			(function ($, win) {
+				$.fn.inViewport = function (cb) {
+					return this.each(function (i, el) {
+						function visPx() {
+							var H = $(this).height(),
+									r = el.getBoundingClientRect(), t = r.top, b = r.bottom;
+							var result = cb.call(el, Math.max(0, t > 0 ? H - t : (b < H ? b : H)));
+							if (result) {
+								$(win).off("resize scroll", visPx);
+							}
+						}
+
+						visPx();
+						$(win).on("resize scroll", visPx);
+					});
+				};
+			}(jQuery, window));
+		});
+
+		function inViewportDefer(method) {
+			if (window.jQuery && $.fn.inViewport) {
+				method();
+			} else {
+				setTimeout(function() {
+					inViewportDefer(method)
+				}, 50);
+			}
+		}
+
+	</script>
+	<script type="text/javascript">
+		function _gaLt(event) {
+			/* If GA is blocked or not loaded, or not main|middle|touch click then don't track */
+			if (!ga.hasOwnProperty("loaded") || ga.loaded != true || (event.which != 1 && event.which != 2)) {
+				return;
+			}
+			var el = event.srcElement || event.target;
+
+			while (el && (typeof el.tagName == 'undefined' || el.tagName.toLowerCase() != 'a' || !el.href)) {
+				el = el.parentNode;
+			}
+			if (el && el.href) {
+				var link = el.href;
+				if ((link.indexOf(location.host) == -1 || link.indexOf('.' + location.host) > 0) && !link.match(/^javascript\:/i)) {
+					var target = (el.target && !el.target.match(/^_(self|parent|top)$/i)) ? el.target : false;
+					if (event.ctrlKey || event.shiftKey || event.metaKey || event.which == 2) {
+						target = "_blank";
+					}
+
+					var hbrun = false; // tracker has not yet run
+					var hitBack = function() {
+						if (hbrun) return;
+						hbrun = true;
+						window.location.href = link;
+					};
+
+					if (target) {
+						ga(
+								"send", "event", "Outgoing Links", link,
+								document.location.pathname + document.location.search
+						);
+					} else {
+						event.preventDefault ? event.preventDefault() : event.returnValue = !1;
+						ga(
+								"send", "event", "Outgoing Links", link,
+								document.location.pathname + document.location.search, {
+									"hitCallback": hitBack
+								}
+						);
+
+						setTimeout(hitBack, 1000);
+					}
+				}
+			}
+		}
+
+		var _w = window;
+		var _gaLtEvt = ("ontouchstart" in _w) ? "click" : "mousedown";
+		_w.addEventListener ? _w.addEventListener("load", function() {document.body.addEventListener(_gaLtEvt, _gaLt, !1)}, !1)
+				: _w.attachEvent && _w.attachEvent("onload", function() {document.body.attachEvent("on" + _gaLtEvt, _gaLt)});
+	</script>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-88383331-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+<script type="text/javascript" src="./指南_ 东西板_files/webforms.min.js.下载"></script><script type="text/javascript" src="./指南_ 东西板_files/ml_jQuery.inputmask.bundle.min.js.下载"></script><link type="text/css" rel="stylesheet" charset="UTF-8" href="./指南_ 东西板_files/translateelement.css"></head>
+<body>
+<div id="cellophane" onclick="tb.toggleMenu()"></div>
+<header>
+	<a href="https://thingsboard.io/" class="logo"></a>
+	<div id="githubButtonContainer">
+        <span></span>
+    </div>
+    <div class="nav-buttons nav-buttons-left" data-auto-burger="primary">
+        <a href="https://thingsboard.io/installations/" class="button center-button" id="tryItNow" data-auto-burger-exclude=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">现在就试试</font></font></a>
+        <!--a href="/docs/guides/" class="button center-button" id="guides" data-auto-burger-exclude>Guides</a-->
+        <!--a target="_blank" href="https://demo.thingsboard.io/signup" class="button center-button" id="liveDemo" data-auto-burger-exclude>Live demo</a-->
+    </div>
+    <div class="nav-buttons nav-buttons-right" data-auto-burger="primary">
+        <div class="nav-items">
+            <div class="nav-item-container">
+                <a href="javascript:void(0);" class="nav-item" id="solutions" onclick="tb.openMenu(&#39;solutionsNav&#39;, &#39;solutions&#39;)" data-auto-burger-exclude=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">解决方案</font></font></a>
+            </div>
+            <div class="nav-item-container">
+                <a href="javascript:void(0);" class="nav-item" id="customers" onclick="tb.openMenu(&#39;customersNav&#39;, &#39;customers&#39;)" data-auto-burger-exclude=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">顾客</font></font></a>
+            </div>
+            <div class="nav-item-container">
+                <a href="javascript:void(0);" class="nav-item" id="use_cases" onclick="tb.openMenu(&#39;useCasesNav&#39;, &#39;use_cases&#39;)" data-auto-burger-exclude=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用例</font></font></a>
+            </div>
+            <div class="nav-item-container">
+                <a href="javascript:void(0);" class="nav-item" id="partners_menu" onclick="tb.openMenu(&#39;partnersNav&#39;, &#39;partners_menu&#39;)" data-auto-burger-exclude=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a>
+            </div>
+            <div class="nav-item-container">
+                <a href="javascript:void(0);" class="nav-item" id="about_us" onclick="tb.openMenu(&#39;aboutUsNav&#39;, &#39;about_us&#39;)" data-auto-burger-exclude=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关于我们</font></font></a>
+            </div>
+        </div>
+        <a href="https://thingsboard.io/pricing/" class="button center-button" id="viewPricing" data-auto-burger-exclude=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">定价</font></font></a>
+        <font style="vertical-align: inherit;"><a href="https://thingsboard.io/docs/guides/" class="button center-button" id="guides" data-auto-burger-exclude=""><font style="vertical-align: inherit;">指南</font></a></font><a href="https://thingsboard.io/docs/" class="button center-button" id="viewDocs" data-auto-burger-exclude=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件</font></font></a>
+        <a href="https://thingsboard.io/docs/guides/" class="button center-button" id="guides" data-auto-burger-exclude=""><font style="vertical-align: inherit;"></font></a>
+		<button id="hamburger" onclick="tb.toggleMenu()" data-auto-burger-exclude=""><div></div></button>
+	</div>
+
+	<nav id="mainNav">
+		<main id="headNav" data-auto-burger="primary">
+			<div class="nav-box">
+				<h3><a href="https://thingsboard.io/docs/getting-started-guides/helloworld/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">开始使用</font></font></a></h3>
+			</div>
+			<!--div class="nav-box">
+				<h3><a href="/docs/">Documentation</a></h3>
+			</div-->
+            <div class="nav-box">
+                <h3><a href="https://thingsboard.io/docs/guides/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">导游</font></font></a></h3>
+            </div>
+			<div class="nav-box">
+				<h3><a href="https://thingsboard.io/iot-use-cases/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用例</font></font></a></h3>
+			</div>
+			<div class="nav-box">
+				<h3><a href="http://blog.thingsboard.io/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">博客</font></font></a></h3>
+			</div>
+			<div class="nav-box">
+				<h3><a href="https://thingsboard.io/docs/services/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务</font></font></a></h3>
+			</div>
+			<div class="nav-box">
+				<h3><a href="https://thingsboard.io/docs/contact-us/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联系我们</font></font></a></h3>
+			</div>
+		</main>
+		<main data-auto-burger="primary">
+			<div class="center">
+				<div class="social">
+					<a href="https://twitter.com/thingsboard" class="twitter"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Twitter </font></font></span></a>
+					<a href="https://github.com/thingsboard/thingsboard" class="github"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Github </font></font></span></a>
+					<a href="https://gitter.im/thingsboard/chat" class="gitter"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gitter </font></font></span></a>
+					<a href="http://stackoverflow.com/questions/tagged/thingsboard" class="stack-overflow"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Stack Overflow </font></font></span></a>
+					<a href="https://groups.google.com/forum/#!forum/thingsboard" class="mailing-list"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">邮件列表</font></font></span></a>
+					<a href="https://www.youtube.com/thingsboard" class="youtube"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">YouTube频道</font></font></span></a>
+					<a href="https://www.facebook.com/thingsboard" class="facebook"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Facebook页面</font></font></span></a>
+				</div>
+			</div>
+			<div class="clear" style="clear: both"></div>
+		</main>
+	</nav>
+	<nav id="solutionsNav" class="nav-menu">
+		<main data-auto-burger="primary">
+			<div class="nav-box">
+				<img src="./指南_ 东西板_files/head-solutions.svg">
+			</div>
+			<div class="nav-box">
+				<ul>
+					<a href="https://thingsboard.io/products/" target="_self">
+						<li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">产品展示</font></font></strong></li>
+					</a>
+					<a href="https://thingsboard.io/docs/getting-started-guides/what-is-thingsboard/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ThingsBoard社区版</font></font></span></li>
+					</a>
+					<a href="https://thingsboard.io/products/thingsboard-pe/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ThingsBoard专业版</font></font></span></li>
+					</a>
+					<a href="https://thingsboard.io/docs/iot-gateway/what-is-iot-gateway/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ThingsBoard物联网网关</font></font></span></li>
+					</a>
+					<a href="https://thingsboard.io/products/license-server/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ThingsBoard许可服务器</font></font></span></li>
+					</a>
+				</ul>
+			</div>
+			<div class="nav-box">
+				<ul>
+					<a href="https://thingsboard.io/docs/services/" target="_self">
+						<li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务</font></font></strong></li>
+					</a>
+					<a href="https://thingsboard.io/docs/services/support/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></span></li>
+					</a>
+					<a href="https://thingsboard.io/docs/services/trainings/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">培训课程</font></font></span></li>
+					</a>
+					<a href="https://thingsboard.io/docs/services/consulting/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">专业的服务</font></font></span></li>
+					</a>
+				</ul>
+			</div>
+		</main>
+	</nav>
+	<nav id="customersNav" class="nav-menu">
+		<main data-auto-burger="primary">
+			<div class="nav-box">
+				<img src="./指南_ 东西板_files/head-customers.svg">
+			</div>
+			<div class="nav-box">
+			</div>
+			<div class="nav-box">
+				<ul>
+					<a href="https://thingsboard.io/industries/" target="_self">
+						<li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">产业领域</font></font></strong></li>
+					</a>
+					<a href="https://thingsboard.io/industries/smart-energy/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">智能能源</font></font></span></li>
+					</a>
+					<a href="https://thingsboard.io/industries/agriculture/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">农业</font></font></span></li>
+					</a>
+					<a href="https://thingsboard.io/industries/smart-buildings/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">智能建筑</font></font></span></li>
+					</a>
+					<a href="https://thingsboard.io/industries/smart-city/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">智慧城市</font></font></span></li>
+					</a>
+					<a href="https://thingsboard.io/industries/telecom/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电讯</font></font></span></li>
+					</a>
+					<a href="https://thingsboard.io/industries/industry40/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">工业4.0</font></font></span></li>
+					</a>
+				</ul>
+			</div>
+		</main>
+	</nav>
+	<nav id="useCasesNav" class="nav-menu">
+		<main data-auto-burger="primary">
+			<div class="nav-box">
+				<img src="./指南_ 东西板_files/head-use-cases.svg">
+			</div>
+			<div class="nav-box">
+			</div>
+			<div class="nav-box">
+				<ul>
+					<a href="https://thingsboard.io/iot-use-cases/" target="_self">
+						<li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">物联网用例</font></font></strong></li>
+					</a>
+					<a href="https://thingsboard.io/smart-metering/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">智能计量</font></font></span></li>
+					</a>
+					<a href="https://thingsboard.io/smart-energy/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">智能能源</font></font></span></li>
+					</a>
+					<a href="https://thingsboard.io/smart-farming/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">智慧农业</font></font></span></li>
+					</a>
+					<a href="https://thingsboard.io/fleet-tracking/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">车队追踪</font></font></span></li>
+					</a>
+				</ul>
+			</div>
+		</main>
+	</nav>
+    <nav id="partnersNav" class="nav-menu">
+        <main data-auto-burger="primary">
+            <div class="nav-box">
+                <img src="./指南_ 东西板_files/head-partners.svg">
+            </div>
+            <div class="nav-box">
+            </div>
+            <div class="nav-box">
+                <ul>
+                    <a href="https://thingsboard.io/partners/hardware/" target="_self">
+                        <li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></strong></li>
+                    </a>
+                    <a href="https://thingsboard.io/partners/hardware/" target="_self">
+                        <li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">硬件合作伙伴</font></font></span></li>
+                    </a>
+                </ul>
+            </div>
+        </main>
+    </nav>
+	<nav id="aboutUsNav" class="nav-menu">
+		<main data-auto-burger="primary">
+			<div class="nav-box">
+				<img src="./指南_ 东西板_files/head-about-us.svg">
+			</div>
+			<div class="nav-box">
+			</div>
+			<div class="nav-box">
+				<ul>
+					<a href="https://thingsboard.io/company/" target="_self">
+						<li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我们公司</font></font></strong></li>
+					</a>
+					<a href="https://thingsboard.io/docs/contact-us/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联系我们</font></font></span></li>
+					</a>
+					<a href="https://thingsboard.io/mediakit/" target="_self">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">媒体工具包</font></font></span></li>
+					</a>
+					<a href="https://blog.thingsboard.io/">
+						<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">博客</font></font></span></li>
+					</a>
+				</ul>
+			</div>
+
+		</main>
+	</nav>
+</header>
+
+<!--  HERO  -->
+<section id="hero" class="light-text">
+  <div id="hero-content">
+    <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">导游</font></font></h1>
+    <h5><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">探索ThingsBoard教程和指南。</font></font></h5>
+    <!--h5>Explore ThingsBoard tutorials and guides. Open <a style="font-weight: 500; color: #50b1ff;" href="http://v14.thingsboard.io/docs">documentation</a> for releases before 2.0</h5-->
+    <!--<h5>-->
+      <!--<div id="pe-docs-banner">-->
+        <!--<img src="/images/new-icon-blue.svg"/>-->
+        <!--<div><a class="pe-link" href="/products/thingsboard-pe/">ThingsBoard Professional Edition</a> with White-labeling and Platform Integrations <a class="pe-learn-more" href="/products/thingsboard-pe/">Learn More</a></div>-->
+      <!--</div>-->
+    <!--</h5>-->
+    <div id="vendorStrip" class="light-text">
+      <div id="docsList">
+          <ul>
+            <li><a href="https://thingsboard.io/docs/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文档首页</font></font></a></li>
+            <li><a href="https://thingsboard.io/docs/getting-started-guides/helloworld/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">入门</font></font></a></li>
+            <li><a href="https://thingsboard.io/docs/guides/" class="YAH"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指南</font></font></a></li>
+            <li><a href="https://thingsboard.io/docs/installation/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a></li>
+            <li><a href="https://thingsboard.io/docs/reference/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">建筑</font></font></a></li>
+            <li><a href="https://thingsboard.io/docs/api/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API</font></font></a></li>
+            <li><a href="https://thingsboard.io/docs/faq/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">常问问题</font></font></a></li>
+            <li><a href="https://thingsboard.io/docs/contact-us/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联系我们</font></font></a></li>
+          </ul>
+      </div>
+      <div id="searchBox">
+        <input type="text" id="search" placeholder="Search" onkeydown="if (event.keyCode==13) window.location.replace(&#39;/docs/search/?q=&#39; + this.value)">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section id="encyclopedia">
+  
+  <div id="docsContent" class="noToc">
+    
+    <script type="text/javascript">
+
+    var reportedSearchInputs = [];
+    var searchPageCount = 0;
+
+    document.onmousemove = function(e) {
+        var event = e || window.event;
+        window.mouseX = event.clientX;
+        window.mouseY = event.clientY;
+        if (checkMouseMoved()) {
+            checkSearchInput();
+        }
+    };
+
+    jqueryDefer(function () {
+        var searchInput = $('#searchGuideInput');
+        searchInput.keyup(function() {
+            window.typeMouseX = window.mouseX;
+            window.typeMouseY = window.mouseY;
+            filterGuides();
+        });
+        searchInput.blur(function() {
+            checkSearchInput();
+        });
+        filterGuides();
+    });
+
+    function checkMouseMoved () {
+        if (typeof window.typeMouseX === "undefined" || typeof window.typeMouseY === "undefined") {
+            return false;
+        }
+        return window.typeMouseX !== window.mouseX && window.typeMouseY !== window.mouseY;
+    }
+
+    function filterGuides() {
+        $('.guides-list').find('.guide-container').removeClass('hidden');
+        var guidesBlock = $('.guides-block');
+        guidesBlock.removeClass('hidden');
+        searchPageCount = 0;
+        var searchText = $('#searchGuideInput').val();
+
+        var keywords = searchText.split(' ');
+        if (keywords && keywords.length) {
+            var keyRegexps = [];
+            for (var i=0;i<keywords.length;i++) {
+                if (keywords[i].length) {
+                    keyRegexps.push(new RegExp(keywords[i].toLowerCase()));
+                }
+            }
+            guidesBlock.each( function() {
+                var containers = $( this ).find('.guide-container');
+                var total = containers.length;
+                containers.each( function() {
+                    var paragraphs = $(this).find('p');
+                    var text = '';
+                    paragraphs.each( function() {
+                        text += $(this).html();
+                        text += ' ';
+                    });
+                    var matches = testKeywords(keyRegexps, text.toLowerCase());
+                    if (!matches) {
+                        $( this ).addClass('hidden');
+                        total--;
+                    }
+                });
+                searchPageCount += total;
+                if (!total) {
+                    $( this ).addClass('hidden');
+                }
+            });
+        }
+    }
+    
+    function testKeywords(keyRegexps, input) {
+        var result = true;
+        for (var i=0;i<keyRegexps.length;i++) {
+            result = result && keyRegexps[i].test(input);
+        }
+        return result;
+    }
+
+    function checkSearchInput() {
+        var searchText = $('#searchGuideInput').val().trim();
+        if (searchText.length >=3 && reportedSearchInputs.indexOf(searchText) === -1) {
+            reportSearchInput(searchText);
+            reportedSearchInputs.push(searchText);
+        }
+    }
+
+    function reportSearchInput(searchText) {
+
+        if (!ga.hasOwnProperty("loaded") || ga.loaded !== true) {
+            return;
+        }
+
+        ga(
+            "send", "event", "Guides", "search",
+            searchText, searchPageCount
+        );
+    }
+    
+</script>
+
+<div class="guides">
+  <div class="filter-panel">
+    <div id="searchGuideBox">
+<input type="text" id="searchGuideInput" placeholder="Find a guide...">
+    </div>
+  </div>
+  <div class="guides-block" id="AnchorIDGettingStartedGuides">
+    <div class="guides-title-panel">
+<img class="guides-img" src="./指南_ 东西板_files/tb-guide.svg">       <div class="guides-text">
+        <p class="guides-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">入门指南</font></font></p>
+        <p class="guides-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这些指南提供了ThingsBoard主要功能的快速概述。</font><font style="vertical-align: inherit;">设计在15-30分钟内完成。</font></font></p>
+      </div>
+    </div>
+    <ul class="guides-list">
+      <li class="guide-container"><a href="https://thingsboard.io/docs/getting-started-guides/helloworld/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你好，世界</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用MQTT，HTTP或CoAP收集IoT设备数据并在简单的仪表板上对其进行可视化。</font><font style="vertical-align: inherit;">提供各种示例脚本，您可以在PC或笔记本电脑上运行这些脚本来模拟设备。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mqtt http coap可视化helloworld</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/iot-video-tutorials/#working-with-users-devices-and-dashboards">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最终用户物联网仪表板</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何在设备，客户和仪表板上执行基本操作。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备客户仪表板</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/iot-video-tutorials/#device-data-management-using-thingsboard">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备数据管理</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何对设备属性执行基本操作以实现实际的设备管理用例。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备管理属性</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/re-getting-started/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">规则引擎入门</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解ThingsBoard规则引擎和可以实现的典型用例。</font><font style="vertical-align: inherit;">查看Hello World示例，并了解如何启用对传入遥测消息的过滤。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备管理属性</font></font></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/reference/pe-demo-getting-started/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ThingsBoard PE Cloud入门</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用演示智能计量应用程序了解不同的ThingsBoard PE功能。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">专业版</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span> <span class="pe"></span>
+            </div>
+ </a></li>
+    </ul>
+  </div>
+  <div class="guides-block" id="AnchorIDInstallationGuides">
+    <div class="guides-title-panel">
+<img class="guides-img" src="./指南_ 东西板_files/tb-guide.svg">       <div class="guides-text">
+        <p class="guides-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装指南</font></font></p>
+        <p class="guides-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何在各种可用的操作系统上设置ThingsBoard。</font></font></p>
+      </div>
+    </div>
+    <ul class="guides-list">
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/install/windows/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Windows上安装ThingsBoard</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何在Windows OS上安装ThingsBoard平台和所有第三方。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装Windows</font></font></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/install/linux/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Linux上安装ThingsBoard</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何在Ubuntu或CentOS上安装ThingsBoard平台和所有第三方。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装linux ubuntu centos</font></font></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/install/rpi/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Raspberry Pi 3上安装ThingsBoard</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何在Raspberry Pi 3 Model B上安装ThingsBoard平台和所有第三方。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装linux rpi raspberry pi</font></font></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/install/kubernetes/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Kubernetes上安装ThingsBoard</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何在Kubernetes上安装ThingsBoard平台。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装Linux kubernetes</font></font></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/install/docker/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Docker上安装ThingsBoard</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何在Docker上安装ThingsBoard平台。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装码头工人</font></font></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/install/docker/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Docker上安装ThingsBoard（Windows）</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何在Docker（Windows）上安装ThingsBoard平台。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装Docker Windows</font></font></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/install/upgrade-instructions/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">升级ThingsBoard实例</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何将ThingsBoard平台升级到较新版本。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装升级</font></font></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/install/cluster-setup/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">集群设置</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何设置ThingsBoard集群。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装集群</font></font></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+    </ul>
+  </div>
+  <div class="guides-block" id="AnchorIDConnectYourDevice">
+    <div class="guides-title-panel">
+<img class="guides-img" src="./指南_ 东西板_files/tb-guide.svg">       <div class="guides-text">
+        <p class="guides-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">连接您的设备</font></font></p>
+        <p class="guides-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何根据您的连接技术或解决方案连接设备。</font></font></p>
+      </div>
+    </div>
+    <ul class="guides-list">
+      <li class="guide-container"><a href="https://thingsboard.io/docs/reference/http-api/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用ThingsBoard HTTP API连接设备</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用HTTP协议和ThingsBoard内置的有效负载格式连接设备。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http连接</font></font></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/reference/mqtt-api/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用ThingsBoard MQTT API连接设备</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用MQTT协议和ThingsBoard内置的有效负载格式连接设备。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mqtt连接</font></font></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/reference/coap-api/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用ThingsBoard CoAP API连接设备</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用CoAP协议和ThingsBoard内置的有效负载格式连接设备。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">盖连接</font></font></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/iot-gateway/getting-started/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过ThingsBoard IoT网关连接设备</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何在本地网络中部署IoT网关以及如何将消息从设备路由到云。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网关连接</font></font></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ThingsBoard集成基础知识</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解ThingsBoard Integrations功能以及如何使用它来连接使用自定义有效载荷格式的设备和应用程序。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/#platform-integrations-vs-iot-gateway">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ThingsBoard集成与IoT网关</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解平台集成和IoT网关之间的区别。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/http/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用ThingsBoard HTTP集成将具有自定义负载的设备连接起来</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将现有协议和有效负载格式转换为ThingsBoard消息格式。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http连接</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span> <span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/mqtt/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用ThingsBoard MQTT集成将具有自定义负载的设备连接起来。</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">连接到外部代理并使用MQTT数据流</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mqtt连接</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span> <span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/sigfox/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用TB PE集成连接SigFox设备</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何将消息从Sigfox后端路由到ThingsBoard并解码二进制设备有效负载。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sigfox连接</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span> <span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/ttn/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用TheThingsNetwork连接LoRaWAN设备</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何将消息从TheThingsNetwork后端路由到ThingsBoard，反之亦然。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ttn连接</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/opc-ua/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将OPC-UA服务器连接到ThingsBoard</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何将OPC-UA设备连接到ThingsBoard。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opcua连接</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span> <span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/thingpark/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用Actility ThingPark连接LoRaWAN设备</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何将消息从ThingPark路由到ThingsBoard，反之亦然。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/aws-iot/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过AWS IoT连接设备</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用ThingsBoard连接到AWS IoT代理，转换传入消息并生成下行链路。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span> <span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/ibm-watson-iot/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过IBM Watson IoT连接设备</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用ThingsBoard连接到IBM Watson IoT代理，转换传入消息并生成下行链路。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span> <span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/azure-event-hub/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过Azure Event Hub连接设备</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用ThingsBoard连接到Azure Event Hub，转换传入消息并生成下行链路。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span> <span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/tcp/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备使用TCP协议</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如何使用ThingsBoard连接到ThingsBoard TCP服务器，转换传入消息并生成下行链路。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">连接TCP设备</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span> <span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/tcp/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备使用UDP协议</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如何使用ThingsBoard连接到ThingsBoard UDP服务器，转换传入消息并生成下行链路。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">连接UDP设备</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span> <span class="pe"></span>
+            </div>
+ </a></li>
+    </ul>
+  </div>
+  <div class="guides-block" id="AnchorIDDataVisualization">
+    <div class="guides-title-panel">
+<img class="guides-img" src="./指南_ 东西板_files/tb-guide.svg">       <div class="guides-text">
+        <p class="guides-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">数据可视化</font></font></p>
+        <p class="guides-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这些指南包含有关如何配置复杂的ThingsBoard仪表板的说明</font></font></p>
+      </div>
+    </div>
+    <ul class="guides-list">
+      <li class="guide-container"><a href="https://thingsboard.io/docs/iot-video-tutorials/#dashboard-development-guide-part-1-of-3-visualizing-assets-data-using-maps-and-tables">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用地图和表格可视化资产数据</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何：创建资产和设备并定义它们之间的关系；</font><font style="vertical-align: inherit;">添加服务器属性并创建一个新的仪表板；</font><font style="vertical-align: inherit;">使用“实体表”和“地图”小部件可视化资产属性中的数据。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/iot-video-tutorials/#dashboard-development-guide-part-2-of-3-dashboard-states-aliases-and-widget-actions">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">仪表板状态，别名和小部件操作</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何：添加和配置新的仪表板状态；</font><font style="vertical-align: inherit;">创建各种别名；</font><font style="vertical-align: inherit;">使用图像映射小部件可视化属性数据；</font><font style="vertical-align: inherit;">在不同的小部件中创建动作，以便在状态之间导航；</font><font style="vertical-align: inherit;">使用模拟和数字仪表以及“时间序列”小部件可视化遥测数据。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/iot-video-tutorials/#dashboard-development-guide-part-3-of-3-remote-device-control-and-alarm-management">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">远程设备控制和警报管理</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何：添加和使用旋钮控件小部件；</font><font style="vertical-align: inherit;">创建警报规则；</font><font style="vertical-align: inherit;">使用“警报”小部件处理警报；</font><font style="vertical-align: inherit;">公开仪表板。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/iot-video-tutorials/#widget-configuration-guide-part-1-of-3-basic-settings">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基本小部件设置</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何：更改小部件标题，背景，颜色，字体，阴影等。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/iot-video-tutorials/#widget-configuration-guide-part-2-of-3-latest-values-map-widget">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最新值地图小部件</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何基于纬度和经度创建地图小部件，以及自定义地图小部件的布局和属性。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/iot-video-tutorials/#widget-configuration-guide-part-3-of-3-time-series-map-widget">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">时间序列图小部件</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何在“时间序列图”窗口小部件上显示具有最新遥测数据的设备以及如何修改窗口小部件属性。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+    </ul>
+  </div>
+  <div class="guides-block" id="AnchorIDDataProcessing">
+    <div class="guides-title-panel">
+<img class="guides-img" src="./指南_ 东西板_files/tb-guide.svg">       <div class="guides-text">
+        <p class="guides-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">数据处理与行动</font></font></p>
+        <p class="guides-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用ThingsBoard规则引擎。</font></font></p>
+      </div>
+    </div>
+    <ul class="guides-list">
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/validate-incoming-telemetry/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">验证传入遥测</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何配置规则引擎以基于JavaScript过滤器功能丢弃无效的遥测读数。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/telemetry-delta-validation/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">遥测增量计算</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何配置Rule Engine以基于Originator遥测规则节点计算遥测增量读数。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/function-based-on-telemetry-from-two-devices/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基于2个设备的遥测数据功能</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何配置Rule Engine以根据来自多个设备的遥测读数创建新的遥测。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/transform-incoming-telemetry/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">转换输入遥测</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何配置规则引擎以将传入的遥测存储在数据库中之前基于JavaScript函数对其进行转换。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/transform-telemetry-using-previous-record/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以前的记录转换遥测</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何配置规则引擎以基于当前和先前的读数计算计数器读数的“增量”。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/create-clear-alarms/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建和清除警报</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何配置Rule Engine以根据来自设备的传入数据创建和清除警报。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/create-clear-alarms-with-details/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">处理警报详细信息</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何在“警报”节点中配置“警报详细信息”功能，以及如何将“警报”小部件添加到仪表板。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/send-email/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">发送警报电子邮件</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何配置规则引擎以在创建新警报时发送电子邮件。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/send-email-to-customer/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">发送电子邮件给客户</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何配置规则引擎以将电子邮件发送给指定设备的客户。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/iot-gateway/integration-with-telegram-bot/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用Telegram Bot的智能手机上的通知和警报</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何配置规则引擎，以便在创建新警报时使用Telegram Bot发送通知。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/create-inactivity-alarm/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备离线时创建警报</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用RuleEngine在设备离线一段时间后创建警报。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/check-relation-tutorial/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">检查实体之间的关系</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用“检查关系”节点检查实体之间的关系。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/rpc-request-tutorial/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">到相关设备的RPC请求</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用规则引擎将远程请求调用发送到相关设备。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/get-weather-using-rest-api-call/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用REST API获取天气数据</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用REST API获取指定位置的天气数据。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/add-devices-to-group/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加和删​​除设备以动态分组</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何基于来自设备的传入数据动态地从设备组添加和删除设备。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/send-data-external-mqtt-brokers/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将数据发送到外部MQTT代理</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">连接到外部代理并发送MQTT数据流</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="pe"></span>
+            </div>
+ </a></li>
+    </ul>
+  </div>
+  <div class="guides-block" id="AnchorIDDataAnalytics">
+    <div class="guides-title-panel">
+<img class="guides-img" src="./指南_ 东西板_files/tb-guide.svg">       <div class="guides-text">
+        <p class="guides-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">物联网数据分析</font></font></p>
+        <p class="guides-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用规则引擎执行基本分析任务。</font></font></p>
+      </div>
+    </div>
+    <ul class="guides-list">
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/aggregate-incoming-data-stream/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">汇总传入数据流</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根据建筑物内多个水表的读数计算建筑物的总用水量。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">聚合水表分析规则引擎</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/rule-engine-2-0/tutorials/aggregate-latest-data/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">定期汇总最新遥测值</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根据多个温度传感器的读数计算仓库中的平均温度。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">平均温度分析规则引擎</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="pe"></span>
+            </div>
+ </a></li>
+    </ul>
+  </div>
+  <div class="guides-block" id="AnchorIDHardwareSamples">
+    <div class="guides-title-panel">
+<img class="guides-img" src="./指南_ 东西板_files/tb-guide.svg">       <div class="guides-text">
+        <p class="guides-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">五金样品</font></font></p>
+        <p class="guides-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何将各种硬件平台连接到ThingsBoard。</font></font></p>
+      </div>
+    </div>
+    <ul class="guides-list">
+      <li class="guide-container"><a href="https://thingsboard.io/docs/samples/esp32/ota/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用ThingsBoard的ESP32 OTA</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用ThingsBoard自定义小部件，规则链和仪表板进行ESP32 OTA更新</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/samples/esp32/gpio-control-pico-kit-dht22-sensor/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用ThingsBoard Arduino SDK的ESP32 Pico Kit GPIO控制和DHT22传感器监控器</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含接线图，草图和仪表板设置指南。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/samples/arduino/temperature/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用Arduino UNO，ESP8266和DHT22传感器通过MQTT上传温度</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含接线图，草图和仪表板设置指南。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/samples/arduino/sim808-htu21d/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用Arduino UNO，SIM808 Shield和HTU21D传感器通过HTTP上传湿度和温度</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含接线图，草图和仪表板设置指南。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/samples/esp8266/temperature/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用ESP8266和DHT22传感器通过MQTT上传温度</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含接线图，草图，仪表板设置指南和演示视频。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/samples/esp8266/gpio/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ESP8266使用ThingsBoard通过MQTT进行GPIO控制</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含接线图，草图，仪表板设置指南和演示视频。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/samples/nodemcu/temperature/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用NodeMCU和DHT11传感器通过MQTT上传温度</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含接线图，草图和仪表板设置指南。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/samples/raspberry/gpio/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用ThingsBoard对MQTT进行Raspberry Pi GPIO控制</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含接线图，源代码，仪表板设置指南和演示视频。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/samples/raspberry/gpio-android-things/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用Android Things和ThingsBoard的Raspberry Pi GPIO控制</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含接线图，源代码，仪表板设置指南和演示视频。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/samples/raspberry/temperature/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用Raspberry Pi和DHT22传感器通过MQTT上传温度</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含接线图，草图，仪表板设置指南和演示视频。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/samples/linkit-one/gps/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用LinkIt ONE和ThingsBoard进行GPS数据上传和可视化</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含接线图，草图和仪表板设置指南。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/sodaq/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何将您的SODAQ Universal Tracker连接到ThingsBoard</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何通过T-Mobile – IoT CDP集成将SODAQ Universal Tracker连接到ThingsBoard。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NB IoT，NB-IoT，T-Mobile，SODAQ，5G</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/integrations/sodaq-udp">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何将您的SODAQ Universal Tracker连接到ThingsBoard</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何通过UDP集成将SODAQ Universal Tracker连接到ThingsBoard。</font></font></p>
+              <p class="guide-keywords"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NB IoT，NB-IoT，T-Mobile，SODAQ，5G</font></font></p>
+            </div>
+             <div class="guide-icons">
+<span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/samples/ble/raspberry-esp32-xiaomi-sensor-htu21d.md">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">具有Raspberry PI，ESP32，小米MI和HTU21D传感器的ThingsBoard BLE演示</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含接线图和仪表板安装指南。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/samples/nettrartu+/rtu_temp_sensor/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用Nettra RTU通过MQTT上载温度</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含接线图和仪表板安装指南。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+    </ul>
+  </div>
+  <div class="guides-block" id="AnchorIDAdvancedFeatures">
+    <div class="guides-title-panel">
+<img class="guides-img" src="./指南_ 东西板_files/tb-guide.svg">       <div class="guides-text">
+        <p class="guides-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高级功能</font></font></p>
+        <p class="guides-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解高级ThingsBoard功能</font></font></p>
+      </div>
+    </div>
+    <ul class="guides-list">
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/device-connectivity-status/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">连接状态</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何跟踪设备的连接状态：已连接，已断开连接，活动，非活动</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/audit-log/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">审核日志</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何跟踪用户操作以保留审核日志。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/api-limits/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API限制</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何通过限制单个时间单位（分钟，小时等）中来自单个主机的请求数来控制API使用情况</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/white-labeling/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">白标</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何在2分钟内以零编码的方式配置公司或产品徽标和配色方案。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span> <span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/groups/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备和资产组</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何使用实体组和执行批量操作</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span> <span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/scheduler/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">排程器</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何安排各种类型的事件和触发操作。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span> <span class="pe"></span>
+            </div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/reporting/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">报告中</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何根据现有仪表板计划和生成报告。</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons">
+<span class="video"></span> <span class="pe"></span>
+            </div>
+ </a></li>
+    </ul>
+  </div>
+  <div class="guides-block" id="AnchorIDContribution">
+    <div class="guides-title-panel">
+<img class="guides-img" src="./指南_ 东西板_files/tb-guide.svg">       <div class="guides-text">
+        <p class="guides-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">贡献与发展</font></font></p>
+        <p class="guides-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何为Thingsboard做出贡献，自定义和开发自定义小部件和规则节点</font></font></p>
+      </div>
+    </div>
+    <ul class="guides-list">
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/contribution/how-to-contribute/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如何贡献</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何为Thingsboard做出贡献</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/contribution/rule-node-development/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">规则节点开发指南</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何自定义和创建自定义规则节点</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+      <li class="guide-container"><a href="https://thingsboard.io/docs/user-guide/contribution/widgets-development/">             <div class="guide-text">
+              <p class="guide-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">小部件开发指南</font></font></p>
+              <p class="guide-subtitle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解如何自定义和创建自定义小部件</font></font></p>
+              <p class="guide-keywords"></p>
+            </div>
+             <div class="guide-icons"></div>
+ </a></li>
+    </ul>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<footer>
+	<main class="light-text">
+		<nav>
+			<a href="https://thingsboard.io/docs/getting-started-guides/helloworld/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">入门</font></font></a>
+			<a href="https://thingsboard.io/docs/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文档</font></font></a>
+			<a href="https://thingsboard.io/iot-use-cases/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用例</font></font></a>
+			<a href="https://blog.thingsboard.io/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">博客</font></font></a>
+			<a href="https://thingsboard.io/docs/services/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务</font></font></a>
+			<a href="https://thingsboard.io/docs/contact-us/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联系我们</font></font></a>
+		</nav>
+		<div class="newsletterSubsContainer">
+			<script type="text/javascript" src="./指南_ 东西板_files/r9r9x7.js.下载"></script>
+
+<style>
+	
+	
+						@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext');
+														
+
+	#mlb2-7341216,
+	#mlb2-7341216 *,
+	#mlb2-7341216 a:hover,
+	#mlb2-7341216 a:visited,
+	#mlb2-7341216 a:focus,
+	#mlb2-7341216 a:active {
+	    overflow:visible;
+	    position:static;
+	    background:none;
+	    border:none;
+	    bottom:auto;
+	    clear:none;
+	    cursor:default;
+	    float:none;
+	    letter-spacing:normal;
+	    line-height:normal;
+	    text-align:left;
+	    text-indent:0;
+	    text-transform:none;
+	    visibility:visible;
+	    white-space:normal;
+	
+	    max-height:none;
+	    max-width:none;
+	    left:auto;
+	    min-height:0;
+	    min-width:0;
+	    right:auto;
+	    top:auto;
+	    width:auto;
+	    z-index:auto;
+	
+	    text-shadow: none;
+	    box-shadow: none;
+	    outline: medium none;
+	}
+	
+	#mlb2-7341216 a:hover {
+		cursor: pointer !important;
+	}
+	
+	#mlb2-7341216 h4 {
+	    font-weight: normal;
+	}
+
+	#mlb2-7341216 .subscribe-form {
+	
+		padding: 20px;
+				width: 460px !important;
+				border: 2px solid #F6F6F6 !important;
+		background: #ffffff none !important;
+		border-radius: 0px !important;
+		box-sizing: border-box !important;
+	
+	
+	}
+	
+	#mlb2-7341216 .ml-block-form {
+	 
+		margin-bottom: 0px;
+	
+	}
+    
+    #mlb2-7341216 .subscribe-form .form-section {
+    
+        margin-bottom: 20px;
+        width: 100%;
+    
+    }
+    
+    #mlb2-7341216 .subscribe-form .form-section.mb10 {
+    
+        margin-bottom: 10px;
+        float: left;
+    
+    }
+    
+    #mlb2-7341216 .subscribe-form .form-section.mb0 {
+    
+        margin-bottom: 0px;
+    
+    }
+
+    #mlb2-7341216 .subscribe-form .form-section h4 {
+    
+        margin: 0px 0px 10px 0px !important;
+        padding: 0px !important;
+        color: #000000 !important;
+        font-family: 'Open Sans', sans-serif !important;
+        font-size: 28px !important;
+        line-height: 100%;
+        text-align: left !important;
+    
+    }
+
+    #mlb2-7341216 .subscribe-form .form-section p,
+    #mlb2-7341216 .subscribe-form .form-section li {
+    
+        line-height: 150%;
+        padding: 0px !important;
+        margin: 0px 0px 10px 0px;
+        color: #000000 !important;
+        font-family: 'Open Sans', sans-serif !important;
+        font-size: 14px !important;
+    
+    }
+
+    #mlb2-7341216 .subscribe-form .form-section a {
+    
+        font-size: 14px;
+    
+    }
+
+    #mlb2-7341216 .subscribe-form .form-section .confirmation_checkbox {
+    
+        line-height: 150%;
+        padding: 0px !important;
+        margin: 0px 0px 15px 0px !important;
+        color: #000000 !important;
+        font-family: 'Open Sans', sans-serif !important;
+        font-size: 12px !important;
+        font-weight: normal !important;
+    
+    }
+
+    #mlb2-7341216 .subscribe-form .form-section .confirmation_checkbox input[type="checkbox"] {
+    
+        display: inline-block;
+        margin-right: 5px !important;
+        opacity: 1;
+        -webkit-appearance: checkbox;
+        -moz-appearance: checkbox;
+        appearance: checkbox;
+    
+    }
+
+    #mlb2-7341216 .subscribe-form .form-section .form-group {
+    
+        margin-bottom: 15px;
+    
+    }
+
+    #mlb2-7341216 .subscribe-form .form-section .form-group label {
+    
+        float: left;
+        margin-bottom: 10px;
+        width: 100%;
+        line-height: 100%;
+        color: #000000 !important;
+        font-family: 'Open Sans', sans-serif !important;
+        font-size: 14px !important;
+    
+    }
+
+    #mlb2-7341216 .subscribe-form .form-section .checkbox {
+        
+
+        width: 100%;
+        margin: 0px 0px 10px 0px;
+        
+
+    }
+
+    #mlb2-7341216 .subscribe-form .form-section .checkbox label {
+
+    
+
+        color: #000000 !important;
+        font-family: 'Open Sans', sans-serif !important;
+        font-size: 14px !important;
+    
+
+    }
+
+    #mlb2-7341216 .subscribe-form .form-section .checkbox input {
+
+    
+        margin: 0px 5px 0px 0px;
+    
+
+    }
+    
+     #mlb2-7341216 .subscribe-form .form-section .checkbox input[type="checkbox"] {
+
+    
+      display: inline-block;
+      opacity: 1;
+      -webkit-appearance: checkbox;
+      -moz-appearance: checkbox;
+      appearance: checkbox;
+    
+
+    }
+
+
+    #mlb2-7341216.ml-subscribe-form .form-group .form-control {
+
+    
+
+        width: 100%;
+        font-size: 13px;
+        padding: 10px 10px;
+        height: auto;
+        font-family: Arial;
+        border-radius: 0px;
+        border: 1px solid #cccccc !important;
+        color: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+    	-webkit-box-sizing: border-box;
+    	-moz-box-sizing: border-box;
+    	box-sizing: border-box;
+        clear: left;
+
+    
+
+    }
+
+    #mlb2-7341216.ml-subscribe-form button {
+
+    
+
+        border: none !important;
+        cursor: pointer !important;
+        width: 100% !important;
+        border-radius: 0px !important;
+        height: 35px !important;
+        background-color: #305680 !important;
+        color: #FFFFFF !important;
+        font-family: 'Arial', sans-serif !important;
+        font-size: 14px !important;
+        text-align: center !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        position: relative!important;
+
+    
+
+    }
+
+    #mlb2-7341216.ml-subscribe-form button.gradient-on {
+
+    
+
+            background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%);
+            background: -o-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%);
+            background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%);
+            background: linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%);
+
+    
+
+    }
+
+    #mlb2-7341216.ml-subscribe-form button.gradient-on:hover {
+
+    
+
+            background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+            background: -o-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+            background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+            background: linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+
+    
+
+    }
+
+    #mlb2-7341216.ml-subscribe-form button[disabled] {
+
+    
+
+            cursor: not-allowed!important;
+
+    
+
+    }
+
+    #mlb2-7341216.ml-subscribe-form .form-section.ml-error label {
+
+    
+
+        color: red!important;
+
+    
+
+    }
+
+    #mlb2-7341216.ml-subscribe-form .form-group.ml-error label {
+
+    
+
+        color: red!important;
+
+    
+
+    }
+
+    #mlb2-7341216.ml-subscribe-form .form-group.ml-error .form-control  {
+
+    
+
+        border-color: red!important;
+
+    
+
+    }
+    
+
+        #mlb2-7341216 .ml-vertical-align-center {
+        text-align: center;
+        display: block;
+    }
+	
+	#mlb2-7341216 .ml-block-success,
+    #mlb2-7341216 form.ml-block-form {
+		display: inline-block;
+		        width: 460px;
+            }
+    
+        
+    
+    
+            
+    @media (max-width: 768px) {
+	    
+	    #mlb2-7341216 {
+		    
+		    width: 100% !important;
+		    
+	    }
+	    
+	    #mlb2-7341216 form.ml-block-form,
+	    #mlb2-7341216.ml-subscribe-form .subscribe-form {
+			
+			width: 100% !important;
+			
+		}
+		
+	}
+	
+	    
+   
+    	
+	#mlb2-7341216 .subscribe-form.horizontal { padding-bottom: 0px; }
+	
+	#mlb2-7341216 .subscribe-form .form-section.horizontal {
+		float: left;
+		margin-bottom: 5px;
+		width: 70%;
+	}
+	
+	#mlb2-7341216 .subscribe-form .form-section.horizontal .form-group {
+		float: left;
+		width: 100%;
+		padding-right: 10px;
+	    box-sizing: border-box;
+	}
+	
+	#mlb2-7341216 .subscribe-form .form-section.horizontal .form-group .form-control {
+		height: 35px;
+	}
+	
+	#mlb2-7341216 .subscribe-form .ml-form-visible-xs {
+		display: none;
+	}
+	
+	#mlb2-7341216 .subscribe-form .form-section.horizontal.ml-button-position { width: 30%; padding: 0; }
+	#mlb2-7341216 .subscribe-form .form-section.horizontal.ml-button-position.top-padding { padding-top: 24px; }
+	
+		
+		@media (max-width: 768px) {
+		#mlb2-7341216.ml-subscribe-form .subscribe-form .form-section.horizontal {
+			float: none;
+		}
+		#mlb2-7341216.ml-subscribe-form .subscribe-form .form-section.horizontal,
+		#mlb2-7341216.ml-subscribe-form .subscribe-form .form-section.horizontal.ml-button-position,
+		#mlb2-7341216.ml-subscribe-form .subscribe-form .form-section.horizontal .form-group {
+			width: 100%;
+			padding: 0;
+		}
+		#mlb2-7341216 .subscribe-form .form-section.horizontal.ml-button-position {
+			margin-bottom: 20px;
+		}
+		
+		#mlb2-7341216 .subscribe-form .ml-form-visible-xs {
+  		display: block;
+		}
+		#mlb2-7341216 .subscribe-form .ml-form-hidden-xs {
+  		display: none;
+		}
+	}
+		
+</style>
+
+
+
+<div id="mlb2-7341216" class="ml-subscribe-form ml-subscribe-form-7341216">
+  <div class="ml-vertical-align-center">
+    <div class="subscribe-form ml-block-success" style="display:none">
+        <div class="form-section">
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://thingsboard.io/docs/newsletter-thanks/</font></font></p>
+    </div>
+  </div>
+  <form class="ml-block-form" action="https://landing.mailerlite.com/webforms/submit/r9r9x7" data-id="708170" data-code="r9r9x7" method="POST" target="_blank">
+    <div class="subscribe-form horizontal">
+        <div class="form-section mb10">
+                  <p style="text-align: center;"><span style="font-size: 24px; color: #ffffff;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">订阅ThingsBoard IoT新闻通讯</font></font></span></p>
+          </div>
+        <div class="form-section horizontal">
+            <div class="form-group ml-field-email ml-validate-required ml-validate-email">
+                <input type="email" name="fields[email]" class="form-control" placeholder="Email*" value="" autocomplete="email" x-autocompletetype="email" spellcheck="false" autocapitalize="off" autocorrect="off">
+      </div>
+          </div>
+    
+        <div class="form-section horizontal ml-button-position">
+      <button type="submit" class="primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      提交
+      </font></font></button>
+      <button disabled="disabled" style="display: none;" type="button" class="loading">
+      <img src="./指南_ 东西板_files/rolling@2x.gif" width="20" height="20" style="width: 20px; height: 20px;">
+      </button>
+    </div>
+    <div class="clearfix" style="clear: both;"></div>
+        
+                            <input type="hidden" name="ml-submit" value="1">
+      </div>
+  </form>
+  <script>
+    function ml_webform_success_7341216 () {
+            try {
+          window.top.location.href = 'https://thingsboard.io/docs/newsletter-thanks/';
+        } catch (e) {
+          window.location.href = 'https://thingsboard.io/docs/newsletter-thanks/';
+        }
+        };
+  </script>
+</div>
+</div>
+
+
+    
+		</div>
+		<div class="center">
+			<div class="social">
+				<div>
+					<a href="https://twitter.com/thingsboard" class="twitter"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">twitter </font></font></span></a>
+					<a href="https://github.com/thingsboard/thingsboard" class="github"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Github </font></font></span></a>
+					<a href="https://gitter.im/thingsboard/chat" class="gitter"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gitter </font></font></span></a>
+					<a href="http://stackoverflow.com/questions/tagged/thingsboard" class="stack-overflow"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">堆栈溢出</font></font></span></a>
+				</div>
+				<div>
+					<a href="https://groups.google.com/forum/#!forum/thingsboard" class="mailing-list"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">邮件列表</font></font></span></a>
+					<a href="https://www.youtube.com/thingsboard" class="youtube"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">YouTube频道</font></font></span></a>
+					<a href="https://www.facebook.com/thingsboard" class="facebook"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Facebook页面</font></font></span></a>
+				</div>
+			</div>
+		</div>
+		<div id="miceType" class="center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©2019 The ThingsBoard作者</font></font></div>
+	</main>
+</footer>
+
+
+
+
+<style>
+  .cse .gsc-control-cse, .gsc-control-cse {
+    padding: 0;
+  }
+  .gsc-control-cse table, .gsc-control-cse-en table {
+    margin:0px !important;
+  }
+  .gsc-above-wrapper-area {
+    border-bottom: 0;
+  }
+</style>
+
+
+
+<link rel="stylesheet" href="./指南_ 东西板_files/jquery-ui.min.css" media="all"><div class="pi-pushmenu" id="primary" style="display: none;"><div class="overlay"><div class="sled" style="right: 0px;"><div class="content"><ul><li><a href="https://thingsboard.io/docs/getting-started-guides/helloworld/" id=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">开始使用</font></font></a></li><li><a href="https://thingsboard.io/docs/guides/" id=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">导游</font></font></a></li><li><a href="https://thingsboard.io/iot-use-cases/" id=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用例</font></font></a></li><li><a href="http://blog.thingsboard.io/" id=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">博客</font></font></a></li><li><a href="https://thingsboard.io/docs/services/" id=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务</font></font></a></li><li><a href="https://thingsboard.io/docs/contact-us/" id=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联系我们</font></font></a></li><li><a href="https://twitter.com/thingsboard" class="twitter" id=""><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">推特</font></font></span></a></li><li><a href="https://github.com/thingsboard/thingsboard" class="github" id=""><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Github</font></font></span></a></li><li><a href="https://gitter.im/thingsboard/chat" class="gitter" id=""><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">吉特</font></font></span></a></li><li><a href="http://stackoverflow.com/questions/tagged/thingsboard" class="stack-overflow" id=""><span>Stack Overflow</span></a></li><li><a href="https://groups.google.com/forum/#!forum/thingsboard" class="mailing-list" id=""><span>Mailing List</span></a></li><li><a href="https://www.youtube.com/thingsboard" class="youtube" id=""><span>YouTube Channel</span></a></li><li><a href="https://www.facebook.com/thingsboard" class="facebook" id=""><span>Facebook Page</span></a></li><li><a href="https://thingsboard.io/products/" target="_self" id="">
+						<li><strong>Products</strong></li>
+					</a></li><li><a href="https://thingsboard.io/docs/getting-started-guides/what-is-thingsboard/" target="_self" id="">
+						<li><span>ThingsBoard Community Edition</span></li>
+					</a></li><li><a href="https://thingsboard.io/products/thingsboard-pe/" target="_self" id="">
+						<li><span>ThingsBoard Professional Edition</span></li>
+					</a></li><li><a href="https://thingsboard.io/docs/iot-gateway/what-is-iot-gateway/" target="_self" id="">
+						<li><span>ThingsBoard IoT Gateway</span></li>
+					</a></li><li><a href="https://thingsboard.io/products/license-server/" target="_self" id="">
+						<li><span>ThingsBoard License Server</span></li>
+					</a></li><li><a href="https://thingsboard.io/docs/services/" target="_self" id="">
+						<li><strong>Services</strong></li>
+					</a></li><li><a href="https://thingsboard.io/docs/services/support/" target="_self" id="">
+						<li><span>Support</span></li>
+					</a></li><li><a href="https://thingsboard.io/docs/services/trainings/" target="_self" id="">
+						<li><span>Trainings</span></li>
+					</a></li><li><a href="https://thingsboard.io/docs/services/consulting/" target="_self" id="">
+						<li><span>Professional services</span></li>
+					</a></li><li><a href="https://thingsboard.io/industries/" target="_self" id="">
+						<li><strong>Industries</strong></li>
+					</a></li><li><a href="https://thingsboard.io/industries/smart-energy/" target="_self" id="">
+						<li><span>Smart Energy</span></li>
+					</a></li><li><a href="https://thingsboard.io/industries/agriculture/" target="_self" id="">
+						<li><span>Agriculture</span></li>
+					</a></li><li><a href="https://thingsboard.io/industries/smart-buildings/" target="_self" id="">
+						<li><span>Smart Buildings</span></li>
+					</a></li><li><a href="https://thingsboard.io/industries/smart-city/" target="_self" id="">
+						<li><span>Smart City</span></li>
+					</a></li><li><a href="https://thingsboard.io/industries/telecom/" target="_self" id="">
+						<li><span>Telecom</span></li>
+					</a></li><li><a href="https://thingsboard.io/industries/industry40/" target="_self" id="">
+						<li><span>Industry 4.0</span></li>
+					</a></li><li><a href="https://thingsboard.io/iot-use-cases/" target="_self" id="">
+						<li><strong>IoT use cases</strong></li>
+					</a></li><li><a href="https://thingsboard.io/smart-metering/" target="_self" id="">
+						<li><span>Smart Metering</span></li>
+					</a></li><li><a href="https://thingsboard.io/smart-energy/" target="_self" id="">
+						<li><span>Smart Energy</span></li>
+					</a></li><li><a href="https://thingsboard.io/smart-farming/" target="_self" id="">
+						<li><span>Smart Farming</span></li>
+					</a></li><li><a href="https://thingsboard.io/fleet-tracking/" target="_self" id="">
+						<li><span>Fleet Tracking</span></li>
+					</a></li><li><a href="https://thingsboard.io/partners/hardware/" target="_self" id="">
+                        <li><strong>Partners</strong></li>
+                    </a></li><li><a href="https://thingsboard.io/partners/hardware/" target="_self" id="">
+                        <li><span>Hardware partners</span></li>
+                    </a></li><li><a href="https://thingsboard.io/company/" target="_self" id="">
+						<li><strong>Our Company</strong></li>
+					</a></li><li><a href="https://thingsboard.io/docs/contact-us/" target="_self" id="">
+						<li><span>Contact Us</span></li>
+					</a></li><li><a href="https://thingsboard.io/mediakit/" target="_self" id="">
+						<li><span>Media Kit</span></li>
+					</a></li><li><a href="https://blog.thingsboard.io/" id="">
+						<li><span>Blog</span></li>
+					</a></li></ul></div><button class="push-menu-close-button"></button></div></div></div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="./指南_ 东西板_files/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div><link rel="stylesheet" href="./指南_ 东西板_files/sweetalert.css" media="all"><div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

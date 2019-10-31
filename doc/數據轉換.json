@@ -1,0 +1,384 @@
+{
+  "ruleChain": {
+    "additionalInfo": {
+      "description": "根據已知設備，轉換數據，並將其輸入至新設備"
+    },
+    "name": "轉換數據並導入新設備",
+    "firstRuleNodeId": null,
+    "root": false,
+    "debugMode": false,
+    "configuration": null
+  },
+  "metadata": {
+    "firstNodeIndex": 13,
+    "nodes": [
+      {
+        "additionalInfo": {
+          "layoutX": 987,
+          "layoutY": 386
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "開始轉換",
+        "debugMode": true,
+        "configuration": {
+          "jsScript": "if ( msg.val ){\n    msg.val = msg.val -32;\n}\n\nreturn {msg: msg, msgType: msgType};"
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 693,
+          "layoutY": 399
+        },
+        "type": "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode",
+        "name": "數據類型轉換",
+        "debugMode": true,
+        "configuration": {
+          "version": 0
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 397,
+          "layoutY": 397
+        },
+        "type": "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode",
+        "name": "模擬數據生成",
+        "debugMode": true,
+        "configuration": {
+          "msgCount": 0,
+          "periodInSeconds": 10,
+          "originatorId": "c36208a0-efe2-11e9-a2cd-7b46a76e6c4e",
+          "originatorType": "DEVICE",
+          "jsScript": "var msg = { val:50};\n//Math.random的值為0-1内的一位小數值？\nvar msgType = \"POST_TELEMETRY_REQUEST\";\nreturn { msg: msg, msgType: msgType };"
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 406,
+          "layoutY": 16
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "室外溫度",
+        "debugMode": true,
+        "configuration": {
+          "jsScript": "var newMsg = {};\n\nnewMsg.outdoorTemperature = msg.temperature;\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 394,
+          "layoutY": 164
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "室内溫度",
+        "debugMode": true,
+        "configuration": {
+          "jsScript": "var newMsg = {};\n\nnewMsg.indoorTemperature = msg.temperature;\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 764,
+          "layoutY": 174
+        },
+        "type": "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode",
+        "name": "室内外數據",
+        "debugMode": true,
+        "configuration": {
+          "defaultTTL": 0
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 907,
+          "layoutY": 54
+        },
+        "type": "org.thingsboard.rule.engine.metadata.TbGetAttributesNode",
+        "name": "配置新資產屬性",
+        "debugMode": true,
+        "configuration": {
+          "clientAttributeNames": [],
+          "sharedAttributeNames": [],
+          "serverAttributeNames": [],
+          "latestTsKeyNames": [
+            "indoorTemperature",
+            "outdoorTemperature"
+          ],
+          "tellFailureIfAbsent": false
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 1038,
+          "layoutY": 172
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "轉換數據至新資產",
+        "debugMode": true,
+        "configuration": {
+          "jsScript": "var newMsg = {};\n\nnewMsg.deltaTemperature = parseFloat(Math.abs(metadata.indoorTemperature - metadata.outdoorTemperature).toFixed(1));\n\nreturn {\n\tmsg: newMsg,\n\tmetadata: metadata,\n\tmsgType: msgType\n};"
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 1178,
+          "layoutY": 51
+        },
+        "type": "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode",
+        "name": "差值轉換的數據",
+        "debugMode": false,
+        "configuration": {
+          "defaultTTL": 0
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 650,
+          "layoutY": 55
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbChangeOriginatorNode",
+        "name": "關聯至資產",
+        "debugMode": true,
+        "configuration": {
+          "originatorSource": "RELATED",
+          "relationsQuery": {
+            "direction": "FROM",
+            "maxLevel": 1,
+            "filters": [
+              {
+                "relationType": "Contains",
+                "entityTypes": [
+                  "ASSET"
+                ]
+              }
+            ],
+            "fetchLastLevelOnly": false
+          }
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 658,
+          "layoutY": 573,
+          "description": "室内外溫度數據保存至數據庫並遙測顯示"
+        },
+        "type": "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode",
+        "name": "室内外數據",
+        "debugMode": true,
+        "configuration": {
+          "defaultTTL": 0
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 954,
+          "layoutY": 579
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "轉換數據至新設備",
+        "debugMode": true,
+        "configuration": {
+          "jsScript": "var newMsg = {};\n\nnewMsg.deltaTemperature = parseFloat(Math.abs(metadata.indoorTemperature - metadata.outdoorTemperature).toFixed(1));\n\nreturn {\n\tmsg: newMsg,\n\tmetadata: metadata,\n\tmsgType: msgType\n};"
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 463,
+          "layoutY": 708
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbChangeOriginatorNode",
+        "name": "關聯至新設備",
+        "debugMode": true,
+        "configuration": {
+          "originatorSource": "RELATED",
+          "relationsQuery": {
+            "direction": "TO",
+            "maxLevel": 1,
+            "filters": [
+              {
+                "relationType": "Contains",
+                "entityTypes": [
+                  "DEVICE"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 32,
+          "layoutY": 389
+        },
+        "type": "org.thingsboard.rule.engine.filter.TbJsSwitchNode",
+        "name": "檢測設備類型",
+        "debugMode": true,
+        "configuration": {
+          "jsScript": "function nextRelation(metadata, msg){\n\tif(metadata.deviceType === 'indoor'){\n\t\treturn ['indoor'];\n\t}else if(metadata.deviceType === 'outdoor')\n\t\treturn ['outdoor'];\n}\n\nreturn nextRelation(metadata, msg);"
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 265,
+          "layoutY": 789
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "室内溫度",
+        "debugMode": true,
+        "configuration": {
+          "jsScript": "var newMsg = {};\n\nnewMsg.indoorTemperature = msg.temperature;\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 279,
+          "layoutY": 599
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "室外溫度",
+        "debugMode": true,
+        "configuration": {
+          "jsScript": "var newMsg = {};\n\nnewMsg.outdoorTemperature = msg.temperature;\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};"
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 796,
+          "layoutY": 706
+        },
+        "type": "org.thingsboard.rule.engine.metadata.TbGetAttributesNode",
+        "name": "配置新設備屬性",
+        "debugMode": true,
+        "configuration": {
+          "clientAttributeNames": [],
+          "sharedAttributeNames": [],
+          "serverAttributeNames": [],
+          "latestTsKeyNames": [
+            "indoorTemperature",
+            "outdoorTemperature"
+          ]
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 1106,
+          "layoutY": 699,
+          "description": "轉換的差值數據保存至數據庫並遙測顯示"
+        },
+        "type": "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode",
+        "name": "差值轉換的數據",
+        "debugMode": true,
+        "configuration": {
+          "defaultTTL": 0
+        }
+      }
+    ],
+    "connections": [
+      {
+        "fromIndex": 1,
+        "toIndex": 0,
+        "type": "Post telemetry"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 1,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 3,
+        "toIndex": 9,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 4,
+        "toIndex": 9,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 5,
+        "toIndex": 6,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 6,
+        "toIndex": 7,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 7,
+        "toIndex": 8,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 9,
+        "toIndex": 5,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 10,
+        "toIndex": 16,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 11,
+        "toIndex": 17,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 12,
+        "toIndex": 10,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 13,
+        "toIndex": 14,
+        "type": "indoor"
+      },
+      {
+        "fromIndex": 13,
+        "toIndex": 15,
+        "type": "outdoor"
+      },
+      {
+        "fromIndex": 13,
+        "toIndex": 3,
+        "type": "outdoor"
+      },
+      {
+        "fromIndex": 13,
+        "toIndex": 4,
+        "type": "indoor"
+      },
+      {
+        "fromIndex": 14,
+        "toIndex": 12,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 15,
+        "toIndex": 12,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 16,
+        "toIndex": 11,
+        "type": "Success"
+      }
+    ],
+    "ruleChainConnections": [
+      {
+        "fromIndex": 0,
+        "targetRuleChainId": {
+          "entityType": "RULE_CHAIN",
+          "id": "c6186110-ee58-11e9-9541-3180ebf19ab7"
+        },
+        "additionalInfo": {
+          "layoutX": 1216,
+          "layoutY": 383,
+          "ruleChainNodeId": "rule-chain-node-20"
+        },
+        "type": "Success"
+      }
+    ]
+  }
+}

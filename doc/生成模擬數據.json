@@ -1,0 +1,137 @@
+{
+  "ruleChain": {
+    "additionalInfo": null,
+    "name": "生成模擬數據",
+    "firstRuleNodeId": null,
+    "root": false,
+    "debugMode": false,
+    "configuration": null
+  },
+  "metadata": {
+    "firstNodeIndex": null,
+    "nodes": [
+      {
+        "additionalInfo": {
+          "layoutX": 666,
+          "layoutY": 478
+        },
+        "type": "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode",
+        "name": "模擬數據",
+        "debugMode": false,
+        "configuration": {
+          "msgCount": 0,
+          "periodInSeconds": 10,
+          "originatorId": "e76fcfa0-f0a7-11e9-8b17-6b77af7fe1c3",
+          "originatorType": "DEVICE",
+          "jsScript": "var msg = { temp: 42, humidity: 77 };\nvar metadata = { data: 40 };\nvar msgType = \"POST_TELEMETRY_REQUEST\";\n\nreturn { msg: msg, metadata: metadata, msgType: msgType };"
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 159,
+          "layoutY": 605
+        },
+        "type": "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode",
+        "name": "A2 Sensor emulator",
+        "debugMode": true,
+        "configuration": {
+          "msgCount": 0,
+          "periodInSeconds": 10,
+          "originatorId": "c77ae8e0-efb9-11e9-853c-cdf4384f4214",
+          "originatorType": "DEVICE",
+          "jsScript": "var msg = { \n    temperature: (20+5 * Math.random()).toFixed(2),\n};\n\nvar msgType = \"POST_TELEMETRY_REQUEST\";\n\nreturn { msg: msg, msgType: msgType };"
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 151,
+          "layoutY": 541
+        },
+        "type": "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode",
+        "name": "A1 Sensor emulator",
+        "debugMode": true,
+        "configuration": {
+          "msgCount": 0,
+          "periodInSeconds": 10,
+          "originatorId": "b8038f20-efb9-11e9-853c-cdf4384f4214",
+          "originatorType": "DEVICE",
+          "jsScript": "var msg = { \n    temperature: (42+5 * Math.random()).toFixed(2),\n};\nvar msgType = \"POST_TELEMETRY_REQUEST\";\n\nreturn { msg: msg, msgType: msgType };"
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 695,
+          "layoutY": 111
+        },
+        "type": "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode",
+        "name": "室内數據",
+        "debugMode": true,
+        "configuration": {
+          "msgCount": 0,
+          "periodInSeconds": 5,
+          "originatorId": "964abe50-efe9-11e9-a2cd-7b46a76e6c4e",
+          "originatorType": "DEVICE",
+          "jsScript": "var msg = {\r\n    temperature: (20 + 5 * Math.random()).toFixed(1)\r\n};\r\n            \r\nreturn {\r\n    msg: msg,\r\n    metadata: {\r\n        deviceType: \"indoor\"\r\n    },\r\n    msgType: \"POST_TELEMETRY_REQUEST\"\r\n};"
+        }
+      },
+      {
+        "additionalInfo": {
+          "layoutX": 684,
+          "layoutY": 27
+        },
+        "type": "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode",
+        "name": "室外數據",
+        "debugMode": false,
+        "configuration": {
+          "msgCount": 0,
+          "periodInSeconds": 5,
+          "originatorId": "9e18bab0-efe9-11e9-a2cd-7b46a76e6c4e",
+          "originatorType": "DEVICE",
+          "jsScript": "var msg = {\r\n    temperature: (18 + 5 * Math.random()).toFixed(1)\r\n};\r\n            \r\nreturn {\r\n    msg: msg,\r\n    metadata: {\r\n        deviceType: \"outdoor\"\r\n    },\r\n    msgType: \"POST_TELEMETRY_REQUEST\"\r\n};"
+        }
+      }
+    ],
+    "connections": null,
+    "ruleChainConnections": [
+      {
+        "fromIndex": 0,
+        "targetRuleChainId": {
+          "entityType": "RULE_CHAIN",
+          "id": "c6186110-ee58-11e9-9541-3180ebf19ab7"
+        },
+        "additionalInfo": {
+          "layoutX": 1004,
+          "layoutY": 481,
+          "ruleChainNodeId": "rule-chain-node-6"
+        },
+        "type": "Success"
+      },
+      {
+        "fromIndex": 3,
+        "targetRuleChainId": {
+          "entityType": "RULE_CHAIN",
+          "id": "c6186110-ee58-11e9-9541-3180ebf19ab7"
+        },
+        "additionalInfo": {
+          "layoutX": 1004,
+          "layoutY": 481,
+          "ruleChainNodeId": "rule-chain-node-6"
+        },
+        "type": "Success"
+      },
+      {
+        "fromIndex": 4,
+        "targetRuleChainId": {
+          "entityType": "RULE_CHAIN",
+          "id": "c6186110-ee58-11e9-9541-3180ebf19ab7"
+        },
+        "additionalInfo": {
+          "layoutX": 1004,
+          "layoutY": 481,
+          "ruleChainNodeId": "rule-chain-node-6"
+        },
+        "type": "Success"
+      }
+    ]
+  }
+}
